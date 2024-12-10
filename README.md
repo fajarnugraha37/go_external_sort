@@ -2,6 +2,26 @@
 
 This project implements an external sorting algorithm in Go, capable of handling large datasets that exceed available memory. The program reads a dataset of random strings from a file, sorts them, and writes the sorted output to a new file. It includes a dataset generator that creates random strings for testing purposes.
 
+## Table of Contents
+
+- [External Sorting in Go](#external-sorting-in-go)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Build](#build)
+  - [Simple Build](#simple-build)
+  - [Optimized Build](#optimized-build)
+  - [Cross-Compilation](#cross-compilation)
+- [Usage](#usage)
+  - [Generating a Dataset](#generating-a-dataset)
+  - [Sorting the Dataset](#sorting-the-dataset)
+- [How It Works](#how-it-works)
+- [Sequence Diagram](#sequence-diagram)
+- [Memory Management](#memory-management)
+- [Contributing](#contributing)
+- [License](#license)
+  
 ## Features
 
 - Generates a dataset of random strings.
