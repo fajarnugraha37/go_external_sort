@@ -98,6 +98,41 @@ or
    - It reads the dataset from the input file.
    - It splits the dataset into manageable chunks, sorts each chunk, and writes them to temporary files.
    - It merges the sorted chunks into a final sorted output file.
+  
+## Sequence Diagram
+
+```mermaid
+sequenceDiagram
+    participant User
+    participant Generator
+    participant Sorter
+    participant FileSystem as FS
+    participant TempDirectory as TempDir
+
+    User->>Generator: Run dataset generation command
+    Generator->>FS: Create dataset file
+    FS-->>Generator: Confirm file creation
+    Generator->>FS: Write random strings to dataset file
+    FS-->>Generator: Confirm write completion
+    Generator->>User: Dataset generated successfully
+
+    User->>Sorter: Run sorting command
+    Sorter->>FS: Open dataset file
+    FS-->>Sorter: Provide dataset file
+    Sorter->>TempDir: Create temp directory (if not exists)
+    Sorter->>FS: Read dataset file
+    FS-->>Sorter: Provide dataset content
+    Sorter->>Sorter: Split dataset into chunks
+    Sorter->>Sorter: Sort each chunk
+    Sorter->>TempDir: Write sorted chunks to temp files
+    TempDir-->>Sorter: Confirm chunk write completion
+    Sorter->>TempDir: Merge sorted chunks
+    Sorter->>FS: Write sorted output file
+    FS-->>Sorter: Confirm output file creation
+    Sorter->>User: Sorting completed successfully
+```
+- `Participants`: The diagram includes five participants: User, Generator, Sorter, FileSystem, and TempDirectory.
+- `Interactions`: The arrows represent the interactions between these participants, showing the flow of commands and responses during the dataset generation and sorting processes.
 
 ## Memory Management
 
