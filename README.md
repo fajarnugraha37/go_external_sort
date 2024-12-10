@@ -51,7 +51,7 @@ This command compiles the code and creates executables in the bin directory.
 
 ### Optimized Build
 
-For a production-optimized build, you can use the following command:
+For a optimized-optimized build, you can use the following command:
 ```bash
 go build -o ./bin/dataset.exe -ldflags="-s -w" ./cmd/dataset/main.go
 go build -o ./bin/sort.exe -ldflags="-s -w" ./cmd/sort/main.go
