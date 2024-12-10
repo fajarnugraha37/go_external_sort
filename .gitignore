@@ -1,0 +1,43 @@
+# Go binaries
+/bin/*.exe
+
+# Build artifacts
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.out
+
+# Test binary, build cache, and coverage files
+*.test
+*.cache
+*.cover
+
+# Dependency directories
+/vendor/
+Gopkg.lock
+Gopkg.toml
+
+# Go workspace files
+go.work
+go.work.sum
+
+# Temporary files
+temp/
+*.tmp
+*.temp
+dataset_*.txt
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+*.DS_Store
+*.log
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
