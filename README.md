@@ -32,8 +32,8 @@ This project implements an external sorting algorithm in Go, capable of handling
 
 1. Clone the repository:
 ```bash
-$ git clone https://github.com/fajarnugraha37/go_external_sort.git 
-$ cd go_external_sort
+git clone https://github.com/fajarnugraha37/go_external_sort.git 
+cd go_external_sort
 ```
 
 2. Ensure you have Go installed on your machine. You can download it from [golang.org](https://go.dev/dl/).
@@ -44,8 +44,8 @@ $ cd go_external_sort
 
 To build the project for development, you can use the following command:
 ```bash
-$ go build -o ./bin/dataset.exe ./cmd/dataset/main.go
-$ go build -o ./bin/sort.exe ./cmd/sort/main.go
+go build -o ./bin/dataset.exe ./cmd/dataset/main.go
+go build -o ./bin/sort.exe ./cmd/sort/main.go
 ```
 This command compiles the code and creates executables in the bin directory.
 
@@ -53,8 +53,8 @@ This command compiles the code and creates executables in the bin directory.
 
 For a production-optimized build, you can use the following command:
 ```bash
-$ go build -o ./bin/dataset.exe -ldflags="-s -w" ./cmd/dataset/main.go
-$ go build -o ./bin/sort.exe -ldflags="-s -w" ./cmd/sort/main.go
+go build -o ./bin/dataset.exe -ldflags="-s -w" ./cmd/dataset/main.go
+go build -o ./bin/sort.exe -ldflags="-s -w" ./cmd/sort/main.go
 ```
 - `-ldflags="-s -w"`: This flag reduces the size of the binary by omitting the symbol table and debug
 
@@ -68,11 +68,11 @@ If you are on a different operating system and want to cross-compile for another
 
 To generate a dataset of random strings, use the following command:
 ```bash
-$ go run ./cmd/dataset/main.go -output dataset_input.txt -count 10000000 -length 16
+go run ./cmd/dataset/main.go -output dataset_input.txt -count 10000000 -length 16
 ```
 or
 ```bash
-$ ./bin/dataset.exe -output dataset_input.txt -count 10000000 -length 16
+./bin/dataset.exe -output dataset_input.txt -count 10000000 -length 16
 ```
 - `-output`: Path to the output file where the dataset will be saved.
 - `-count`: Number of random strings to generate (default is 100,000).
@@ -82,11 +82,11 @@ $ ./bin/dataset.exe -output dataset_input.txt -count 10000000 -length 16
 
 To sort the generated dataset, use the following command:
 ```bash
-$ go run ./cmd/sort/main.go -input dataset_input.txt -output dataset_output.txt
+go run ./cmd/sort/main.go -input dataset_input.txt -output dataset_output.txt
 ```
 or
 ```bash
-$ ./bin/sort.exe -input dataset_input.txt -output dataset_output.txt
+./bin/sort.exe -input dataset_input.txt -output dataset_output.txt
 ```
 - `-input`: Path to the input file containing the dataset to be sorted.
 - `-output`: Path to the output file where the sorted dataset will be saved.
