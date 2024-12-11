@@ -6,6 +6,42 @@ import (
     "sort"
 )
 
+// chunk represents a sorted chunk with its associated file and scanner.
+type chunk struct {
+    file    *os.File
+    scanner *bufio.Scanner
+    value   string
+}
+
+// priorityQueue is a simple min-heap for managing chunks.
+type priorityQueue []*chunk
+
+// newPriorityQueue creates a new priority queue.
+func newPriorityQueue() *priorityQueue {
+    return &priorityQueue{}
+}
+
+// push adds a chunk to the priority queue.
+func (pq *priorityQueue) push(c *chunk) {
+    *pq = append(*pq, c)
+    sort.Slice(*pq, func(i, j int) bool {
+        return (*pq)[i].value < (*pq)[j].value
+    })
+}
+
+// pop removes and returns the smallest chunk from the priority queue.
+func (pq *priorityQueue) pop() *chunk {
+    min := (*pq)[0]
+    *pq = (*pq)[1:]
+    return min
+}
+
+// len returns the number of chunks in the priority queue.
+func (pq *priorityQueue) len() int {
+    return len(*pq)
+}
+
+
 // mergeChunks merges the sorted chunk files into a single output file.
 func mergeChunks(chunkFiles []string, outputFile string) error {
     // Create the output file
@@ -57,39 +93,4 @@ func mergeChunks(chunkFiles []string, outputFile string) error {
     }
 
     return nil
-}
-
-// chunk represents a sorted chunk with its associated file and scanner.
-type chunk struct {
-    file    *os.File
-    scanner *bufio.Scanner
-    value   string
-}
-
-// priorityQueue is a simple min-heap for managing chunks.
-type priorityQueue []*chunk
-
-// newPriorityQueue creates a new priority queue.
-func newPriorityQueue() *priorityQueue {
-    return &priorityQueue{}
-}
-
-// push adds a chunk to the priority queue.
-func (pq *priorityQueue) push(c *chunk) {
-    *pq = append(*pq, c)
-    sort.Slice(*pq, func(i, j int) bool {
-        return (*pq)[i].value < (*pq)[j].value
-    })
-}
-
-// pop removes and returns the smallest chunk from the priority queue.
-func (pq *priorityQueue) pop() *chunk {
-    min := (*pq)[0]
-    *pq = (*pq)[1:]
-    return min
-}
-
-// len returns the number of chunks in the priority queue.
-func (pq *priorityQueue) len() int {
-    return len(*pq)
 }
